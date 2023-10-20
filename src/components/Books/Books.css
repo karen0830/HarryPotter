@@ -1,0 +1,155 @@
+nav{
+    display: grid;
+    padding: 20px;
+    grid-template-columns: 20% 50%;
+}
+
+nav img{
+    width: 100%;
+    height: 100%;
+    grid-column: 1/2;
+}
+
+.descriptionCollection{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    padding: 10px;
+    width: 80%;
+    grid-column: 2/4;
+}
+
+.descriptionCollection p, h1, h2, h3, h4, h5, h6{
+    margin: 0;
+    padding: 0;
+}
+
+
+main{
+    grid-template-columns: 15% 70% 15%;
+    grid-template-rows: 300px 50px 70px 100%;
+    display: grid;
+}
+
+.books{
+    grid-column: 2/3;
+    grid-row: 4/5;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    box-shadow: 0 0 10px #8B0000
+}
+
+.books .item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+    
+}
+
+.item div{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+}
+main img{
+    width: 150px;
+    height: 250px;
+}
+
+.imgTitle{
+    display: flex;
+}
+.imgTitle p, h1, h2, h3, h4, h5, h6{
+    margin: 2px;
+    padding: 1px;
+}
+
+.carritoCompras{
+    align-items: center;
+    justify-content: center;
+    grid-column: 2/3;
+    grid-row: 1/2;
+    margin-left: 9px;
+    border: solid 2px rgb(15, 15, 15);
+    background: rgb(117, 27, 27);
+    width: 80%;
+    height: 300px; /* Ajusta esto a la altura que desees */
+    overflow-y: auto; /* Habilita el desplazamiento vertical */
+}
+
+.compras{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.date{
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    padding: 10px;
+    width: 90%;
+}
+
+.date img{
+    grid-column: 1/2;
+    width: 100px;
+    height: 100px;
+}
+
+.buttons{
+    display: flex;
+    grid-column: 3/4;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.buttons button{
+    width: 30px;
+    height: 30px;
+}
+
+.delete{
+    width: 80px;
+}
+
+.date p{
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+
+.titlePriceDelete{
+    grid-column: 2/3;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 70px;
+    margin-left: 10px;
+}
+
+.total{
+    grid-row: 2/3;
+    grid-column: 2/3;
+    width: 100%;
+    text-align: left;
+}
+
+.CancelarCompra{
+    width: 100%;
+    text-align: left;
+    grid-row: 3/4;
+    grid-column: 2/3;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+}
