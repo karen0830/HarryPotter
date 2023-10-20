@@ -1,0 +1,52 @@
+@media (max-width: 550px) {
+    .descriptionCollection p, h1, h2, h3, h4, h5, h6{
+        margin: 0;
+        padding: 0;
+        padding-left: -3px;
+    }
+
+    nav img{
+        width: 126%;
+        height: 100%;
+        grid-column: 2/2;
+    }
+
+    .carritoCompras {
+        align-items: center;
+        justify-content: center;
+        grid-column: 2/3;
+        grid-row: 1/2;
+        margin-left: 18px;
+        border: solid 2px rgb(15, 15, 15);
+        background: rgb(117, 27, 27);
+        width: 100%;
+        height: 290px;
+        overflow-y: auto;
+    }
+
+      .total {
+        text-align: left;
+        padding-left: 10px;
+      }
+
+      .CancelarCompra {
+        text-align: left;
+        padding-left: 7px;
+      }
+
+      .books .item {
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        width: 100%;
+        gap: 20px;
+        flex-direction: column;
+      }
+
+      main img {
+        width: 145px;
+        height: 225px;
+      }
+
+  }
+  

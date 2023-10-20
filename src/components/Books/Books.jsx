@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import "./Books.css"
+import "./mediaBooks.css"
 export const Books = () => {
     const [poster, setPoster] = useState({})
     const [books, setBooks] = useState([])
