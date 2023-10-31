@@ -113,6 +113,7 @@ export const Books = () => {
                         if (book.id == id) {
                             book.count = book.count - 1;
                             book.total = book.total - book.price;
+                            book.estado = true
                             if (book.count <= 0) {
                                 return false; // Esto eliminará el libro del array
                             }
@@ -140,12 +141,18 @@ export const Books = () => {
             count: 1,
             total: price,
             disponible: disponible,
+            estado: true
         };
 
         book.forEach((i) => {
             if (i.id == id) {
                 if (i.disponible == 0) {
                     setEstado(false);
+                    array.forEach((book) => {
+                        if (book.id == id) {
+                            book.estado = false
+                        }
+                    });
                 } else {
                     i.disponible -= 1;
                     setEstado(true);
@@ -154,6 +161,7 @@ export const Books = () => {
                             book.count = book.count + 1;
                             book.total = book.count * book.price;
                             add += 1;
+                            book.estado = true
                         }
                     });
                     if (add == 0) {
@@ -301,7 +309,7 @@ export const Books = () => {
                                             </button>
                                         </div>
 
-                                        {estado == true ? (
+                                        {item.estado == true ? (
                                             // Aquí es donde pones lo que quieres renderizar si items.length es 0
                                             <div className="buttons">
                                                 <button
