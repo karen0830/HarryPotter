@@ -1,52 +1,73 @@
 @media (max-width: 550px) {
-    .descriptionCollection p, h1, h2, h3, h4, h5, h6{
-        margin: 0;
-        padding: 0;
-        padding-left: -3px;
-    }
 
-    nav img{
-        width: 126%;
-        height: 100%;
-        grid-column: 2/2;
-    }
-
-    .carritoCompras {
-        align-items: center;
-        justify-content: center;
-        grid-column: 2/3;
-        grid-row: 1/2;
-        margin-left: 18px;
-        border: solid 2px rgb(15, 15, 15);
-        background: rgb(117, 27, 27);
-        width: 100%;
-        height: 290px;
-        overflow-y: auto;
-    }
-
-      .total {
-        text-align: left;
-        padding-left: 10px;
-      }
-
-      .CancelarCompra {
-        text-align: left;
-        padding-left: 7px;
-      }
-
-      .books .item {
-        display: flex;
-        justify-content: center;
-        align-items: start;
-        width: 100%;
-        gap: 20px;
-        flex-direction: column;
-      }
-
-      main img {
-        width: 145px;
-        height: 225px;
-      }
-
+  .main {
+    grid-template-columns: 15% 70% 15%;
+    grid-template-rows: 300px 50px 70px 100%;
+    display: grid;
   }
-  
+
+  .descriptionCollection p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    padding: 0;
+    padding-left: -3px;
+  }
+
+  nav img {
+    width: 126%;
+    height: 100%;
+  }
+
+  .carritoCompras {
+    align-items: center;
+    justify-content: center;
+    margin-left: 18px;
+    border: solid 2px rgb(15, 15, 15);
+    background: rgb(117, 27, 27);
+    width: 100%;
+    height: 290px;
+    overflow-y: auto;
+  }
+
+  .compras img {
+    display: none;
+  }
+
+  .compras div {
+    display: flex;
+  }
+
+  .buttons {
+    text-align: start;
+  }
+
+  .total {
+    text-align: left;
+    padding-left: 10px;
+  }
+
+  .CancelarCompra {
+    text-align: left;
+    padding-left: 7px;
+  }
+
+  .books .item {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+    gap: 20px;
+    flex-direction: column;
+  }
+
+  main img {
+    width: 145px;
+    height: 225px;
+  }
+
+}
