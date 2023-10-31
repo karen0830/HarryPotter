@@ -27,10 +27,10 @@ export const Books = () => {
     const yesBuy = () => {
         if (items.length == 0) {
             setClassNameExitBuy(true)
-            setTotalExitBuy("Su Compra no se realizo porque no ha añadido nada")
+            setTotalExitBuy("Your Purchase was not completed because you have not added anything")
         } else {
             setClassNameExitBuy(true)
-            setTotalExitBuy(`Su compra ha sido exitosa con un total de ${total}`)
+            setTotalExitBuy(`Your purchase has been successful with a total of ${total}`)
             setItems([])
         }
 
@@ -52,10 +52,10 @@ export const Books = () => {
 
         if (items.length == 0) {
             setStateTextCancel(true)
-            setClassTextCancel("No se cancelo nada porque no ha añadido nada")
+            setClassTextCancel("Nothing was canceled because nothing was added")
         } else {
             setStateTextCancel(true)
-            setClassTextCancel(`Su cancelación ha sido exitosa`)
+            setClassTextCancel(`Your cancellation has been successful`)
             array.forEach((j) => {
                 book.forEach((i) => {
                     if (j.id == i.id) {
@@ -277,13 +277,13 @@ export const Books = () => {
                     <div className="">
                         <button onClick={shopping} className="flex flex-row">
                             <i class="ri-shopping-cart-2-line"></i>
-                            Carrito De compras
+                            shopping cart
                         </button>
                     </div>
                     <div className={classShopping ? "modal" : "modalNot"}>
                         <div className="carritoCompras">
                             <div className="title">
-                                <h3>Carrito de compras</h3>
+                                <h3>shopping cart</h3>
                                 <button onClick={shopping}>X</button>
                             </div>
                             <div className="compras">
@@ -296,9 +296,9 @@ export const Books = () => {
                                         <div className="titlePriceDelete">
                                             <p>{item.title}</p>
                                             <p>
-                                                Precio unitario: <b>{item.price}</b>
+                                                unit price: <b>{item.price}</b>
                                             </p>
-                                            <p>Total compra: {item.total}</p>
+                                            <p>Total purchase: {item.total}</p>
                                             <button
                                                 onClick={() => {
                                                     deleteC(item.id);
@@ -336,7 +336,7 @@ export const Books = () => {
                                             </div>
                                         ) : (
                                             <div className="buttons">
-                                                <p>Agotado</p>
+                                                <p>Exhausted</p>
                                                 <p>{item.count}</p>
                                                 <button
                                                     onClick={() => {
@@ -360,43 +360,43 @@ export const Books = () => {
                             <div className="CancelarCompra">
                                 <div className="optionCancel">
                                     <div className={classNameCancel ? "cancelPurchase" : "notcancelPurchase"}>
-                                        <p>Desea continuar con la cancelación?</p>
+                                        <p>Do you want to continue with the cancellation?</p>
                                         <div>
-                                            <button onClick={yesCancel}>Si</button>
+                                            <button onClick={yesCancel}>Yes</button>
                                             <button
                                                 onClick={() => {
                                                     setClassNameCancel(false);
                                                 }}
                                             >
-                                                No
+                                                Not
                                             </button>
                                         </div>
                                     </div>
                                     {classNameCancel == false && stateTextCancel == true ? (
                                         <div>
-                                            <p>{classTextCancel} <button onClick={cerrarCancel}>Cerrar</button></p>
+                                            <p>{classTextCancel} <button onClick={cerrarCancel}>Close</button></p>
                                         </div>
                                     ) : classNameCancel == false && stateTextCancel == false ? (
-                                        <button onClick={cancelPurchase}>Cancelar Compra</button>
+                                        <button onClick={cancelPurchase}>Cancel purchase</button>
                                     ) : null}
                                 </div>
                                 <div className="optionBuy">
                                     <div className={classNameBuy ? "buyBooks" : "notBuyBooks"}>
-                                        <p>Desea continuar con la compra?</p>
+                                        <p>Do you want to continue with the purchase?</p>
                                         <div>
-                                            <button onClick={yesBuy}>Si</button>
+                                            <button onClick={yesBuy}>Yes</button>
                                             <button onClick={() => { setClassNameBuy(false) }}>
-                                                No
+                                                Not
                                             </button>
                                         </div>
                                     </div>
                                     {classNameBuy == false && classNameExitBuy == true ? (
                                         <div>
-                                            <p>{totalExitBuy} <button onClick={cerrar}>Cerrar</button></p>
+                                            <p>{totalExitBuy} <button onClick={cerrar}>Close</button></p>
 
                                         </div>
                                     ) : classNameBuy == false && classNameExitBuy == false ? (
-                                        <button onClick={optionBooks}>Comprar</button>
+                                        <button onClick={optionBooks}>Buy</button>
                                     ) : null}
                                 </div>
                             </div>
@@ -412,9 +412,9 @@ export const Books = () => {
                                 <h4>{item.title}</h4>
                                 <p>{item.overview}</p>
                                 <p>
-                                    Precio: <b>{item.precio}</b>
+                                    Price: <b>{item.precio}</b>
                                 </p>
-                                <p>Dispoible: {item.disponible}</p>
+                                <p>Available: {item.disponible}</p>
                                 {item.disponible > 0 ? (
                                     // Aquí es donde pones lo que quieres renderizar si items.length es 0
                                     <button
@@ -433,7 +433,7 @@ export const Books = () => {
                                     </button>
                                 ) : (
                                     // Y aquí es donde pones lo que quieres renderizar si items.length no es 0
-                                    <p>Agotado</p>
+                                    <p>Exhausted</p>
                                 )}
                             </div>
                         </div>
