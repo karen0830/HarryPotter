@@ -1,6 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, createContext, useContext } from "react";
 import "./Books.css";
 import "./mediaBooks.css"
+
+export const AuthContext = createContext()
+export const useAuth = () => {
+    const context = useContext(AuthContext);
+    if (!context) {
+        throw new Error("useAuth must be ussed within an AutProvider")
+    }
+    return context;
+}
 // ports
 export const Books = () => {
     const [poster, setPoster] = useState({});
@@ -214,13 +223,20 @@ export const Books = () => {
         console.log("books", books);
     }, [books]);
 
-    const cerrar = ()=>{
+    const cerrar = () => {
         setClassNameBuy(false);
         setClassNameExitBuy(false)
     }
-    const cerrarCancel = ()=>{
+    const cerrarCancel = () => {
         setClassNameCancel(false);
         setStateTextCancel(false)
+    }
+    const [classShopping, setClassShoping] = useState(false)
+
+    const shopping = () => {
+        if (classShopping) {
+            setClassShoping(false)
+        } else setClassShoping(true)
     }
     return (
         <>
@@ -249,124 +265,135 @@ export const Books = () => {
                 </div>
             </nav>
             <main className={classNameCancel || classNameBuy ? "moidificationMain" : "main"}>
-                <div className="carritoCompras">
-                    <div className="title">
-                        <h3>Carrito de compras</h3>
-                    </div>
-                    <div className="compras">
-                        {items.map((item) => (
-                            <div className="date" key={item.id}>
-                                <img
-                                    src={`https://image.tmdb.org/t/p/original${item.image}`}
-                                    alt="Harry potter libros"
-                                />
-                                <div className="titlePriceDelete">
-                                    <p>{item.title}</p>
-                                    <p>
-                                        Precio unitario: <b>{item.price}</b>
-                                    </p>
-                                    <p>Total compra: {item.total}</p>
-                                    <button
-                                        onClick={() => {
-                                            deleteC(item.id);
-                                        }}
-                                        className="delete"
-                                    >
-                                        Delete
-                                    </button>
-                                </div>
-
-                                {estado == true ? (
-                                    // Aquí es donde pones lo que quieres renderizar si items.length es 0
-                                    <div className="buttons">
-                                        <button
-                                            onClick={() => {
-                                                addItem(
-                                                    item.image,
-                                                    item.title,
-                                                    item.title,
-                                                    item.price,
-                                                    item.id
-                                                );
-                                            }}
-                                        >
-                                            +
-                                        </button>
-                                        <p>{item.count}</p>
-                                        <button
-                                            onClick={() => {
-                                                less(item.id);
-                                            }}
-                                        >
-                                            -
-                                        </button>
-                                    </div>
-                                ) : (
-                                    <div className="buttons">
-                                        <p>Agotado</p>
-                                        <p>{item.count}</p>
-                                        <button
-                                            onClick={() => {
-                                                less(item.id);
-                                            }}
-                                        >
-                                            -
-                                        </button>
-                                    </div>
-                                )}
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                <div className="total">
-                    <p>
-                        Total: <b>{total}</b>
-                    </p>
-                </div>
-                <div className="CancelarCompra">
-                    <div className="optionCancel">
-                        <div className={classNameCancel ? "cancelPurchase" : "notcancelPurchase"}>
-                            <p>Desea continuar con la cancelación?</p>
-                            <div>
-                                <button onClick={yesCancel}>Si</button>
-                                <button
-                                    onClick={() => {
-                                        setClassNameCancel(false);
-                                    }}
-                                >
-                                    No
-                                </button>
-                            </div>
-                        </div>
-                        {classNameCancel == false && stateTextCancel == true ? (
-                            <div>
-                                <p>{classTextCancel} <button onClick={cerrarCancel}>Cerrar</button></p>
-                            </div>
-                        ) : classNameCancel == false && stateTextCancel == false ? (
-                            <button onClick={cancelPurchase}>Cancelar Compra</button>
-                        ) : null}
-                    </div>
-                    <div className="optionBuy">
-                        <div className={classNameBuy ? "buyBooks" : "notBuyBooks"}>
-                            <p>Desea continuar con la compra?</p>
-                            <div>
-                                <button onClick={yesBuy}>Si</button>
-                                <button onClick={() => { setClassNameBuy(false) }}>
-                                    No
-                                </button>
-                            </div>
-                        </div>
-                        {classNameBuy == false && classNameExitBuy == true ? (
-                            <div>
-                                <p>{totalExitBuy} <button onClick={cerrar}>Cerrar</button></p>
-                                
-                            </div>
-                        ) : classNameBuy == false && classNameExitBuy == false ? (
-                            <button onClick={optionBooks}>Comprar</button>
-                        ) : null}
-                    </div>
-                </div>
                 <div className="books">
+                    <div className="">
+                        <button onClick={shopping} className="flex flex-row">
+                            <i class="ri-shopping-cart-2-line"></i>
+                            Carrito De compras
+                        </button>
+                    </div>
+                    <div className={classShopping ? "modal" : "modalNot"}>
+                        <div className="carritoCompras">
+                            <div className="title">
+                                <h3>Carrito de compras</h3>
+                                <button onClick={shopping}>X</button>
+                            </div>
+                            <div className="compras">
+                                {items.map((item) => (
+                                    <div className="date" key={item.id}>
+                                        <img
+                                            src={`https://image.tmdb.org/t/p/original${item.image}`}
+                                            alt="Harry potter libros"
+                                        />
+                                        <div className="titlePriceDelete">
+                                            <p>{item.title}</p>
+                                            <p>
+                                                Precio unitario: <b>{item.price}</b>
+                                            </p>
+                                            <p>Total compra: {item.total}</p>
+                                            <button
+                                                onClick={() => {
+                                                    deleteC(item.id);
+                                                }}
+                                                className="delete"
+                                            >
+                                                Delete
+                                            </button>
+                                        </div>
+
+                                        {estado == true ? (
+                                            // Aquí es donde pones lo que quieres renderizar si items.length es 0
+                                            <div className="buttons">
+                                                <button
+                                                    onClick={() => {
+                                                        addItem(
+                                                            item.image,
+                                                            item.title,
+                                                            item.title,
+                                                            item.price,
+                                                            item.id
+                                                        );
+                                                    }}
+                                                >
+                                                    +
+                                                </button>
+                                                <p>{item.count}</p>
+                                                <button
+                                                    onClick={() => {
+                                                        less(item.id);
+                                                    }}
+                                                >
+                                                    -
+                                                </button>
+                                            </div>
+                                        ) : (
+                                            <div className="buttons">
+                                                <p>Agotado</p>
+                                                <p>{item.count}</p>
+                                                <button
+                                                    onClick={() => {
+                                                        less(item.id);
+                                                    }}
+                                                >
+                                                    -
+                                                </button>
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="containerOptions">
+                            <div className="total">
+                                <p>
+                                    Total: <b>{total}</b>
+                                </p>
+                            </div>
+                            <div className="CancelarCompra">
+                                <div className="optionCancel">
+                                    <div className={classNameCancel ? "cancelPurchase" : "notcancelPurchase"}>
+                                        <p>Desea continuar con la cancelación?</p>
+                                        <div>
+                                            <button onClick={yesCancel}>Si</button>
+                                            <button
+                                                onClick={() => {
+                                                    setClassNameCancel(false);
+                                                }}
+                                            >
+                                                No
+                                            </button>
+                                        </div>
+                                    </div>
+                                    {classNameCancel == false && stateTextCancel == true ? (
+                                        <div>
+                                            <p>{classTextCancel} <button onClick={cerrarCancel}>Cerrar</button></p>
+                                        </div>
+                                    ) : classNameCancel == false && stateTextCancel == false ? (
+                                        <button onClick={cancelPurchase}>Cancelar Compra</button>
+                                    ) : null}
+                                </div>
+                                <div className="optionBuy">
+                                    <div className={classNameBuy ? "buyBooks" : "notBuyBooks"}>
+                                        <p>Desea continuar con la compra?</p>
+                                        <div>
+                                            <button onClick={yesBuy}>Si</button>
+                                            <button onClick={() => { setClassNameBuy(false) }}>
+                                                No
+                                            </button>
+                                        </div>
+                                    </div>
+                                    {classNameBuy == false && classNameExitBuy == true ? (
+                                        <div>
+                                            <p>{totalExitBuy} <button onClick={cerrar}>Cerrar</button></p>
+
+                                        </div>
+                                    ) : classNameBuy == false && classNameExitBuy == false ? (
+                                        <button onClick={optionBooks}>Comprar</button>
+                                    ) : null}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     {books.map((item) => (
                         <div className="item" key={item.id}>
                             <img
