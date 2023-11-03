@@ -1,16 +1,7 @@
-import React, { useEffect, useState, createContext, useContext } from "react";
+import React, { useEffect, useState} from "react";
 import "./Books.css";
 import "./mediaBooks.css"
 
-export const AuthContext = createContext()
-export const useAuth = () => {
-    const context = useContext(AuthContext);
-    if (!context) {
-        throw new Error("useAuth must be ussed within an AutProvider")
-    }
-    return context;
-}
-// ports
 export const Books = () => {
     const [poster, setPoster] = useState({});
     const [books, setBooks] = useState([]);
