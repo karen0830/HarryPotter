@@ -195,7 +195,7 @@ export const Books = () => {
                 const min = 100000;
                 const max = 300000;
                 const cantidadMin = 0;
-                const cantidadMax = 5;
+                const cantidadMax = 15;
                 let randomCantidad = 0;
                 let random = 0;
                 data.parts.map((item) => {
