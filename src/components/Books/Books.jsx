@@ -16,7 +16,6 @@ export const Books = () => {
     const [books, setBooks] = useState([]);
     const [items, setItems] = useState([]);
     const [total, setTotal] = useState(0);
-    const [estado, setEstado] = useState(true);
     const [classNameExitBuy, setClassNameExitBuy] = useState(false);
     const [totalExitBuy, setTotalExitBuy] = useState(0)
     const [classNameBuy, setClassNameBuy] = useState(false);
@@ -108,17 +107,16 @@ export const Books = () => {
             if (i.id == id) {
                 i.disponible += 1;
                 if (i.disponible > 0) {
-                    setEstado(true);
                     array = items.filter((book) => {
                         if (book.id == id) {
                             book.count = book.count - 1;
                             book.total = book.total - book.price;
                             book.estado = true
                             if (book.count <= 0) {
-                                return false; // Esto eliminará el libro del array
+                                return false; 
                             }
                         }
-                        return true; // Esto mantendrá el libro en el array
+                        return true; 
                     });
                 }
             }
@@ -147,7 +145,6 @@ export const Books = () => {
         book.forEach((i) => {
             if (i.id == id) {
                 if (i.disponible == 0) {
-                    setEstado(false);
                     array.forEach((book) => {
                         if (book.id == id) {
                             book.estado = false
@@ -155,7 +152,6 @@ export const Books = () => {
                     });
                 } else {
                     i.disponible -= 1;
-                    setEstado(true);
                     array.forEach((book) => {
                         if (book.id == id) {
                             book.count = book.count + 1;
