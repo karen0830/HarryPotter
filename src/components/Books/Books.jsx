@@ -13,6 +13,7 @@ export const Books = () => {
     const [classNameCancel, setClassNameCancel] = useState(false);
     const [classTextCancel, setClassTextCancel] = useState(false);
     const [stateTextCancel, setStateTextCancel] = useState(false);
+    const [classShopping, setClassShoping] = useState(false)
 
     const yesBuy = () => {
         if (items.length == 0) {
@@ -78,7 +79,7 @@ export const Books = () => {
                 count = book.count;
                 return false;
             }
-            return true; // Esto mantendrá el libro en el array
+            return true; 
         });
 
         book.forEach((i) => {
@@ -88,7 +89,7 @@ export const Books = () => {
         });
 
         setBooks(book);
-        setItems(array); // Actualiza el estado con la copia modificada del array
+        setItems(array); 
     };
 
     const less = (id) => {
@@ -114,11 +115,11 @@ export const Books = () => {
         });
 
         setBooks(book);
-        setItems(array); // Actualiza el estado con la copia modificada del array
+        setItems(array); 
     };
 
     const addItem = (image, title, description, price, id, disponible) => {
-        let array = [...items]; // Crea una copia del array items
+        let array = [...items]; 
         let book = [...books];
         let add = 0;
         const newItem = {
@@ -226,7 +227,7 @@ export const Books = () => {
         setClassNameCancel(false);
         setStateTextCancel(false)
     }
-    const [classShopping, setClassShoping] = useState(false)
+    
 
     const shopping = () => {
         if (classShopping) {
@@ -297,7 +298,6 @@ export const Books = () => {
                                         </div>
 
                                         {item.estado == true ? (
-                                            // Aquí es donde pones lo que quieres renderizar si items.length es 0
                                             <div className="buttons">
                                                 <button
                                                     onClick={() => {
@@ -403,7 +403,6 @@ export const Books = () => {
                                 </p>
                                 <p>Available: {item.disponible}</p>
                                 {item.disponible > 0 ? (
-                                    // Aquí es donde pones lo que quieres renderizar si items.length es 0
                                     <button
                                         onClick={() => {
                                             addItem(
@@ -419,7 +418,6 @@ export const Books = () => {
                                         Add to car
                                     </button>
                                 ) : (
-                                    // Y aquí es donde pones lo que quieres renderizar si items.length no es 0
                                     <p>Exhausted</p>
                                 )}
                             </div>
