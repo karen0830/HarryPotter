@@ -196,7 +196,8 @@ export const Books = () => {
                         Math.floor(Math.random() * (cantidadMax - cantidadMin + 1)) +
                         cantidadMin;
                     random = Math.floor(Math.random() * (max - min + 1)) + min;
-                    item.precio = random;
+                    let randomNumber = Math.round(random / 1000) * 1000;
+                    item.precio = randomNumber;
                     item.disponible = randomCantidad;
                 });
                 console.log(random);
