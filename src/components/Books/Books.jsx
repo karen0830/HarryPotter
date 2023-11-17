@@ -3,17 +3,17 @@ import "./Books.css";
 import "./mediaBooks.css"
 
 export const Books = () => {
-    const [poster, setPoster] = useState({});
-    const [books, setBooks] = useState([]);
-    const [items, setItems] = useState([]);
-    const [total, setTotal] = useState(0);
-    const [classNameExitBuy, setClassNameExitBuy] = useState(false);
-    const [totalExitBuy, setTotalExitBuy] = useState(0)
-    const [classNameBuy, setClassNameBuy] = useState(false);
-    const [classNameCancel, setClassNameCancel] = useState(false);
-    const [classTextCancel, setClassTextCancel] = useState(false);
-    const [stateTextCancel, setStateTextCancel] = useState(false);
-    const [classShopping, setClassShoping] = useState(false)
+    const [poster, setPoster] = useState({}); //Titulo e imagen
+    const [books, setBooks] = useState([]);//libros 
+    const [items, setItems] = useState([]);//libros agregados al carrito de compras
+    const [total, setTotal] = useState(0);//total
+    const [classNameExitBuy, setClassNameExitBuy] = useState(false);//Estado de la compra si es true pasa classNameBuy a false que permite esconder el boton principal de la compra
+    const [totalExitBuy, setTotalExitBuy] = useState(0) //mensaje en caso de darle yes a la compra
+    const [classNameBuy, setClassNameBuy] = useState(false);// permite esconder el buton principal de la compra
+    const [classNameCancel, setClassNameCancel] = useState(false);// permite esconder el buton principal de la cancelación
+    const [classTextCancel, setClassTextCancel] = useState(false);//muestra el mensaje de la cancelacion
+    const [stateTextCancel, setStateTextCancel] = useState(false);//Estado de la cancelacion si es true pasa calssTextCancel a false que permite esconder el boton principal de la cancelacion
+    const [classShopping, setClassShoping] = useState(false)//Permite la apertura de el carrito de compras
 
     const yesBuy = () => {
         if (items.length == 0) {
@@ -260,7 +260,7 @@ export const Books = () => {
                     </p>
                 </div>
             </nav>
-            <main className={classNameCancel || classNameBuy ? "moidificationMain" : "main"}>
+            <main className="main">
                 <div className="books">
                     <div className="">
                         <button onClick={shopping} className="flex flex-row">
