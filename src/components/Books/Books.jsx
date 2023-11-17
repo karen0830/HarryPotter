@@ -3,7 +3,6 @@ import "./Books.css";
 import "./mediaBooks.css"
 
 export const Books = () => {
-   
     const [poster, setPoster] = useState({}); //Titulo e imagen
     const [books, setBooks] = useState([]);//libros 
     const [items, setItems] = useState([]);//libros agregados al carrito de compras
@@ -85,7 +84,8 @@ export const Books = () => {
 
         book.forEach((i) => {
             if (i.id == id) {
-                i.disponible = count;
+                i.disponible = i.disponible + count;
+                console.log(i.disponible);
             }
         });
 
@@ -260,7 +260,7 @@ export const Books = () => {
                     </p>
                 </div>
             </nav>
-            <main className={classNameCancel || classNameBuy ? "moidificationMain" : "main"}>
+            <main className="main">
                 <div className="books">
                     <div className="">
                         <button onClick={shopping} className="flex flex-row">
